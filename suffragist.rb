@@ -1,4 +1,4 @@
-require 'sinatra'
+﻿require 'sinatra'
 require 'yaml/store'
 
 Choices = {
