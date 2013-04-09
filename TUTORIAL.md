@@ -33,6 +33,7 @@ coach: explain post and get methods, and how to communicate with the browser
 To keep everything in order lets make a folder for our views.
 
 Put this code into index.erb
+```Ruby
 <p>Cast your vote:</p>
 <form action='cast' method='post'>
   <ul class='unstyled'>
@@ -42,14 +43,17 @@ Put this code into index.erb
   </ul>
   <button type='submit' class='btn btn-primary'>Cast this vote!</button>
 </form>
-
+```
 And into suffragist.rb:
+
+```Ruby
 Choices = {
   'krk' => 'Cracow',
   'rad' => 'Radom',
   'waw' => 'Warsaw',
   'wro' => 'Wrocław',
 }
+```
 
 run `ruby suffragist.rb`, check your results and quit server with CTRL-C
 Coach: Talk a little about html. Remind loops from previous part of workshop.
@@ -57,22 +61,28 @@ Coach: Talk a little about html. Remind loops from previous part of workshop.
 ## Add the ability to POST results
 
 Put into suffragist.rb:
+```Ruby
 post '/cast' do
   @vote  = params['vote']
   erb :cast
 end
+```
 
 Create new view cast.erb and put there some html with embedded ruby code:
+```Ruby
 <p>You cast: <%= Choices[@vote] %></p>
 <p><a href='results'>See the results!</a></p>
+```
 
 Coach: Explain what is ERB file.  How to catch what was send in the form? What does @ mean?
 
 ## Add the results route and the results view
+```Ruby
 Put into suffragist.rb:
 get '/results' do
   erb :results
 end
+```
 
 Create new view result.erb
 
@@ -84,11 +94,14 @@ Coach: sum up what we are able to do so far
 Time for something new! Let's store our choices.
 
 Add to suffragist.rb:
+```Ruby
 require 'yaml/store'
+```
 
 Coach: What is YAML?
 
 Add some more code into suffragist.rb:
+```Ruby
 Replace post '/cast' and get '/results' with code:
 post '/cast' do
   @title = 'Thanks for casting your vote!'
@@ -101,18 +114,21 @@ post '/cast' do
   end
   erb :cast
 end
-
+```
+```Ruby
 get '/results' do
   @title = 'Results so far:'
   @store = YAML::Store.new 'votes.yml'
   @votes = @store.transaction { @store['votes'] }
   erb :results
 end
+```
 
 Coach: Explain why are we using words preceded with @.
 
 Add some code into view with result:
 results.erb
+```Ruby
 <table class='table table-hover table-striped'>
   <% Choices.each do |id, text| %>
     <tr>
@@ -123,6 +139,7 @@ results.erb
   <% end %>
 </table>
 <p><a href='/'>Cast more votes!</a></p>
+```
 
 run `ruby suffragist.rb`& check your results
 
