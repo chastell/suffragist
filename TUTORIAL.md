@@ -22,7 +22,7 @@ end
 
 ## Run your app
 
-Got to directory where you put your app and run `ruby suffragist.rb`. Now you can visit [localhost:4567](http://localhost:4567).
+Go to the directory where you put your app and run `ruby suffragist.rb`. Now you can visit [localhost:4567](http://localhost:4567).
 You should see “Hello, voter!” page, which means that the generation of your new app worked correctly.
 Hit CTRL-C in the terminal to quit the server.
 
@@ -56,6 +56,7 @@ Choices = {
 ```
 
 run `ruby suffragist.rb`, check your results and quit server with CTRL-C
+
 Coach: Talk a little about html. Remind loops from previous part of workshop.
 
 ## Add the ability to POST results
@@ -151,4 +152,4 @@ run `ruby suffragist.rb`& check your results
  Let's open votes.yml. And vote. And check again.
 
 
-To coaches: There will be situation when one or more of the girls will forget to quit the server before running it again. It's good opportunity to search with girls for google problem. They don't have to know everything about killing processes to find a sollution.
+To coaches: There will be situation when one or more of the girls will forget to quit the server before running it again. It's a good opportunity to search with girls for google problem. They don't have to know everything about killing processes to find a sollution.
