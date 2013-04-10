@@ -57,10 +57,12 @@ Choices = {
 ```
 
 Change get action:
+```Ruby
 get '/' do
   @title = 'Welcome to the Suffragist!'
   erb :index
 end
+```
 
 Run `ruby suffragist.rb`, check your results and quit the server with `ctrl-c`.
 
