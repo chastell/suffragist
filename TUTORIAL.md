@@ -161,8 +161,8 @@ run `ruby suffragist.rb` and check your results.
 
 ## Factor out a common layout
 
-Now let look in the code (right click in the browser and 'view page source')
-You can see that there is no head and body tags on our views.
+Now lets look at the code (right click in the browser and 'view page source')
+You can see that there is no head and body tags.
 We can add them by adding layout file that will be used in the entire app.
 
 Create layout.erb file in the views directory. Put there code:
