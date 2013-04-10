@@ -56,6 +56,12 @@ Choices = {
 }
 ```
 
+Change get action:
+get '/' do
+  @title = 'Welcome to the Suffragist!'
+  erb :index
+end
+
 Run `ruby suffragist.rb`, check your results and quit the server with `ctrl-c`.
 
 Coach: Talk a little about HTML. Recall loops from the previous part of the workshop.
@@ -153,6 +159,31 @@ run `ruby suffragist.rb` and check your results.
 
 ## Factor out a common layout
 
+Now let look in the code (right click in the browser and 'view page source')
+You can see that there is no head and body tags on our views.
+We can add them by adding layout file that will be used in the entire app.
+
+Create layout.erb file in the views directory. Put there code:
+
+```ERb
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Suffragist</title>
+    <link href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet' />
+  </head>
+  <body class='container'>
+    <h1><%= @title %></h1>
+    <%= yield %>
+  </body>
+</html>
+```
+
+Refresh the page and look into source code again.
+
+Coach: Talk about structure of the html document. Tell what 'yield' do
+
 ## Hook the results view to actual results from the YAML file
 
 ## See how the YAML file changes when votes are cast
@@ -161,5 +192,7 @@ Let’s open `votes.yml`. And vote. And check again.
 
 To coaches: There will be situation when one or more student will
 forget to quit the server before running it again. It’s a good
-opportunity to search the Internetfor the problem. They don’t
+opportunity to search the Internet for the problem. They don’t
 have to know everything about killing processes to find a solution.
+
+Coach: In the end tell shortly about difference between Sinatra and Rails.
