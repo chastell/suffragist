@@ -134,10 +134,6 @@ what was sent in the form? What does `@` mean?
 
 ## Factor out a common layout
 
-Now lets look at the code (right click in the browser and 'view page
-source') You can see that there is no head and body tags. We can add
-them by adding layout file that will be used in the entire app.
-
 Create `layout.erb` file in the `views` directory. Put there code:
 
 ```ERb
