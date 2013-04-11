@@ -38,20 +38,30 @@ a directory for our views (and name it `views`).
 Put this code into `index.erb`:
 
 ```ERb
-<p>Cast your vote:</p>
-<form action='cast' method='post'>
-  <ul class='unstyled'>
-    <% Choices.each do |id, text| %>
-      <li>
-        <label class='radio'>
-          <input type='radio' name='vote' value='<%= id %>' id='vote_<%= id %>' />
-          <%= text %>
-        </label>
-      </li>
-    <% end %>
-  </ul>
-  <button type='submit' class='btn btn-primary'>Cast this vote!</button>
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Suffragist</title>
+    <link href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet' />
+  </head>
+  <body class='container'>
+    <p>Cast your vote:</p>
+    <form action='cast' method='post'>
+      <ul class='unstyled'>
+        <% Choices.each do |id, text| %>
+          <li>
+            <label class='radio'>
+              <input type='radio' name='vote' value='<%= id %>' id='vote_<%= id %>' />
+              <%= text %>
+            </label>
+          </li>
+        <% end %>
+      </ul>
+      <button type='submit' class='btn btn-primary'>Cast this vote!</button>
+    </form>
+  </body>
+</html>
 ```
 And into `suffragist.rb`:
 
@@ -94,12 +104,50 @@ Create a new view, `cast.erb`, and put
 there some HTML with embedded Ruby code:
 
 ```ERb
-<p>You cast: <%= Choices[@vote] %></p>
-<p><a href='results'>See the results!</a></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Suffragist</title>
+    <link href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet' />
+  </head>
+  <body class='container'>
+    <p>You cast: <%= Choices[@vote] %></p>
+    <p><a href='results'>See the results!</a></p>
+  </body>
+</html>
 ```
 
 Coach: Explain what ERb files are. How to catch
 what was sent in the form? What does `@` mean?
+
+## Factor out a common layout
+
+Now lets look at the code (right click in the browser and 'view page
+source') You can see that there is no head and body tags. We can add
+them by adding layout file that will be used in the entire app.
+
+Create `layout.erb` file in the `views` directory. Put there code:
+
+```ERb
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Suffragist</title>
+    <link href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet' />
+  </head>
+  <body class='container'>
+    <h1><%= @title %></h1>
+    <%= yield %>
+  </body>
+</html>
+```
+
+Remove the above parts from the other two templats (`index.erb` and
+`cast.erb`). Refresh the page and look into the source code again.
+
+Coach: Talk about structure of the HTML document. Explain what `yield` does.
 
 ## Add the results route and the results view
 
@@ -173,34 +221,11 @@ Add some code into the `results.erb` view:
 
 run `ruby suffragist.rb` and check your results.
 
-## Factor out a common layout
 
-Now lets look at the code (right click in the browser and 'view page
-source') You can see that there is no head and body tags. We can add
-them by adding layout file that will be used in the entire app.
-
-Create `layout.erb` file in the `views` directory. Put there code:
-
-```ERb
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='UTF-8' />
-    <title>Suffragist</title>
-    <link href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet' />
-  </head>
-  <body class='container'>
-    <h1><%= @title %></h1>
-    <%= yield %>
-  </body>
-</html>
-```
-
-Refresh the page and look into source code again.
-
-Coach: Talk about structure of the HTML document. Explain what `yield` does.
 
 ## Hook the results view to actual results from the YAML file
+
+
 
 ## See how the YAML file changes when votes are cast
 
