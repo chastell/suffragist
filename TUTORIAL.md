@@ -248,3 +248,13 @@ opportunity to search the Internet for a solution. They don’t
 have to know everything about killing processes to find a solution.
 
 Coach: In the end explain shortly the differences between Sinatra and Rails.
+
+
+
+## Play with the app
+
+Try to change things in the app in any way you see fit:
+
+* Maybe redirect to the results outright?
+* Maybe add other votings? How would the YAML file need to change?
+* Maybe try to style the file in different ways?
