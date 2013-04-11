@@ -238,10 +238,6 @@ run `ruby suffragist.rb` and check your results.
 
 
 
-## Hook the results view to actual results from the YAML file
-
-
-
 ## See how the YAML file changes when votes are cast
 
 Let’s open `votes.yml`. And vote. And check again.
