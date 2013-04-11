@@ -31,7 +31,9 @@ Coach: Explain POST and GET methods, and how to communicate with the browser.
 
 
 ## Add the index view
-To keep everything in order let’s make a folder for our views.
+
+To keep everything in order let’s make
+a directory for our views (and name it `views`).
 
 Put this code into `index.erb`:
 
@@ -62,7 +64,8 @@ Choices = {
 }
 ```
 
-Change get action:
+Change `get` action:
+
 ```Ruby
 get '/' do
   @title = 'Welcome to the Suffragist!'
@@ -176,7 +179,7 @@ Now lets look at the code (right click in the browser and 'view page
 source') You can see that there is no head and body tags. We can add
 them by adding layout file that will be used in the entire app.
 
-Create layout.erb file in the views directory. Put there code:
+Create `layout.erb` file in the `views` directory. Put there code:
 
 ```ERb
 <!DOCTYPE html>
@@ -195,7 +198,7 @@ Create layout.erb file in the views directory. Put there code:
 
 Refresh the page and look into source code again.
 
-Coach: Talk about structure of the html document. Tell what 'yield' do
+Coach: Talk about structure of the HTML document. Explain what `yield` does.
 
 ## Hook the results view to actual results from the YAML file
 
@@ -203,9 +206,9 @@ Coach: Talk about structure of the html document. Tell what 'yield' do
 
 Let’s open `votes.yml`. And vote. And check again.
 
-To coaches: There will be situation when one or more student will
+Coach: There will be situations when one or more students will
 forget to quit the server before running it again. It’s a good
-opportunity to search the Internet for the problem. They don’t
+opportunity to search the Internet for a solution. They don’t
 have to know everything about killing processes to find a solution.
 
-Coach: In the end tell shortly about difference between Sinatra and Rails.
+Coach: In the end explain shortly the differences between Sinatra and Rails.
