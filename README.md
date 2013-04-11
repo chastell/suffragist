@@ -15,3 +15,8 @@ Visit [localhost:4567](http://localhost:4567) to cast your first vote.
 If you want to have automatic app reloading when you
 edit the file you can `gem install rerun` and start
 the application with `rerun suffragist.rb` instead.
+
+# Tutorial
+
+Please see [TUTORIAL.md](TUTORIAL.md) for
+the tutorial that can be used with this app.
