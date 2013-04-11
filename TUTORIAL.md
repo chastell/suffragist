@@ -2,11 +2,15 @@
 
 This is an example tutorial for teaching web development with Ruby.
 
+
+
 ## Install Sinatra
 
 `gem install sinatra`
 
 Coach: Explain shortly what [Sinatra](http://www.sinatrarb.com) is.
+
+
 
 ## Create your first Sinatra app
 
@@ -20,6 +24,8 @@ get '/' do
 end
 ```
 
+
+
 ## Run your app
 
 Go to the directory where you put your app and run `ruby suffragist.rb`.
@@ -28,6 +34,7 @@ see a ‘Hello, voter!’ page, which means that the generation of your new
 app worked correctly. Hit `ctrl-c` in the terminal to quit the server.
 
 Coach: Explain POST and GET methods, and how to communicate with the browser.
+
 
 
 ## Add the index view
@@ -89,6 +96,8 @@ results and quit the server with `ctrl-c`.
 Coach: Talk a little about HTML. Recall
 loops from the previous part of the workshop.
 
+
+
 ## Add the ability to POST results
 
 Put this into `suffragist.rb`:
@@ -121,6 +130,8 @@ there some HTML with embedded Ruby code:
 Coach: Explain what ERb files are. How to catch
 what was sent in the form? What does `@` mean?
 
+
+
 ## Factor out a common layout
 
 Now lets look at the code (right click in the browser and 'view page
@@ -149,6 +160,8 @@ Remove the above parts from the other two templats (`index.erb` and
 
 Coach: Talk about structure of the HTML document. Explain what `yield` does.
 
+
+
 ## Add the results route and the results view
 
 Put this into `suffragist.rb`:
@@ -165,6 +178,8 @@ Watch the page (run `ruby suffragist.rb`, check
 your results and quit the server with `ctrl-c`).
 
 Coach: Sum up what we are able to do so far.
+
+
 
 ## Persist the results using `YAML::Store`
 
