@@ -22,9 +22,10 @@ end
 
 ## Run your app
 
-Go to the directory where you put your app and run `ruby suffragist.rb`. Now you can visit [localhost:4567](http://localhost:4567).
-You should see a ‘Hello, voter!’ page, which means that the generation of your new app worked correctly.
-Hit `ctrl-c` in the terminal to quit the server.
+Go to the directory where you put your app and run `ruby suffragist.rb`.
+Now you can visit [localhost:4567](http://localhost:4567). You should
+see a ‘Hello, voter!’ page, which means that the generation of your new
+app worked correctly. Hit `ctrl-c` in the terminal to quit the server.
 
 Coach: Explain POST and GET methods, and how to communicate with the browser.
 
@@ -39,7 +40,12 @@ Put this code into `index.erb`:
 <form action='cast' method='post'>
   <ul class='unstyled'>
     <% Choices.each do |id, text| %>
-      <li><label class='radio'><input type='radio' name='vote' value='<%= id %>' id='vote_<%= id %>' /> <%= text %></label></li>
+      <li>
+        <label class='radio'>
+          <input type='radio' name='vote' value='<%= id %>' id='vote_<%= id %>' />
+          <%= text %>
+        </label>
+      </li>
     <% end %>
   </ul>
   <button type='submit' class='btn btn-primary'>Cast this vote!</button>
@@ -64,9 +70,11 @@ get '/' do
 end
 ```
 
-Run `ruby suffragist.rb`, check your results and quit the server with `ctrl-c`.
+Run `ruby suffragist.rb`, check your
+results and quit the server with `ctrl-c`.
 
-Coach: Talk a little about HTML. Recall loops from the previous part of the workshop.
+Coach: Talk a little about HTML. Recall
+loops from the previous part of the workshop.
 
 ## Add the ability to POST results
 
@@ -79,14 +87,16 @@ post '/cast' do
 end
 ```
 
-Create a new view, `cast.erb`, and put there some HTML with embedded Ruby code:
+Create a new view, `cast.erb`, and put
+there some HTML with embedded Ruby code:
 
 ```ERb
 <p>You cast: <%= Choices[@vote] %></p>
 <p><a href='results'>See the results!</a></p>
 ```
 
-Coach: Explain what ERb files are. How to catch what was sent in the form? What does `@` mean?
+Coach: Explain what ERb files are. How to catch
+what was sent in the form? What does `@` mean?
 
 ## Add the results route and the results view
 
@@ -100,7 +110,8 @@ end
 
 Create a new view, `results.erb`.
 
-Watch the page (run `ruby suffragist.rb`, check your results and quit the server with `ctrl-c`).
+Watch the page (run `ruby suffragist.rb`, check
+your results and quit the server with `ctrl-c`).
 
 Coach: Sum up what we are able to do so far.
 
@@ -161,9 +172,9 @@ run `ruby suffragist.rb` and check your results.
 
 ## Factor out a common layout
 
-Now lets look at the code (right click in the browser and 'view page source')
-You can see that there is no head and body tags.
-We can add them by adding layout file that will be used in the entire app.
+Now lets look at the code (right click in the browser and 'view page
+source') You can see that there is no head and body tags. We can add
+them by adding layout file that will be used in the entire app.
 
 Create layout.erb file in the views directory. Put there code:
 
