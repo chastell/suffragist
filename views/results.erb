@@ -1,0 +1,10 @@
+<table class='table table-hover table-striped'>
+  <% Choices.each do |id, text| %>
+    <tr>
+      <th><%= text %></th>
+      <td><%= @votes[id] || 0 %>
+      <td><%= '#' * (@votes[id] || 0) %></td>
+    </tr>
+  <% end %>
+</table>
+<p><a href='/'>Cast more votes!</a></p>
