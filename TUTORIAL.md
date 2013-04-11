@@ -1,12 +1,12 @@
 # Sample Ruby web-development tutorial
 
-Please expand. `:)`
+This is an example tutorial for teaching web development with Ruby.
 
 ## Install Sinatra
 
 `gem install sinatra`
 
-Coach: Explain shortly what is Sinatra.
+Coach: Explain shortly what [Sinatra](http://www.sinatrarb.com) is.
 
 ## Create your first Sinatra app
 
