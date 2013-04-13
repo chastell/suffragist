@@ -168,7 +168,20 @@ get '/results' do
 end
 ```
 
-Create a new view, `results.erb`.
+Create a new view, `results.erb`. Put there code:
+
+```ERb
+<table class='table table-hover table-striped'>
+  <% Choices.each do |id, text| %>
+    <tr>
+      <th><%= text %></th>
+      <td><%= @votes[id] || 0 %>
+      <td><%= '#' * (@votes[id] || 0) %></td>
+    </tr>
+  <% end %>
+</table>
+<p><a href='/'>Cast more votes!</a></p>
+```
 
 Watch the page (run `ruby suffragist.rb`, check
 your results and quit the server with `ctrl-c`).
