@@ -157,7 +157,7 @@ and put there some HTML with embedded Ruby code:
 ```
 
 Coach: Explain how POST works. How to catch what
-was sent in the form? Where does `params` come from?
+was sent in the form? Where do `params` come from?
 
 
 
@@ -185,7 +185,7 @@ Remove the above parts from the other two templats
 (`index.erb` and `cast.erb` in the `views` directory).
 
 Coach: Talk about the structure of HTML documents and how factoring
-out common parts work in general. Explain what `yield` does.
+out common code work in general. Explain what `yield` does.
 
 
 
