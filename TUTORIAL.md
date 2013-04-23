@@ -42,9 +42,9 @@ Coach: Explain POST and GET methods, and how to communicate with the browser.
 To keep everything in order let’s make
 a directory for our views (and name it `views`).
 
-Put this code into `index.erb`:
+Put this code into an `index.erb` file in the `views` directory:
 
-```ERb
+```HTML
 <!DOCTYPE html>
 <html>
   <head>
@@ -70,6 +70,7 @@ Put this code into `index.erb`:
   </body>
 </html>
 ```
+
 And into `suffragist.rb`:
 
 ```Ruby
@@ -81,7 +82,36 @@ Choices = {
 }
 ```
 
-Change `get` action:
+Change the `get` action:
+
+```Ruby
+get '/' do
+  erb :index
+end
+```
+
+Run `ruby suffragist.rb`, check your
+results and quit the server with `ctrl-c`.
+
+Coach: Talk a little about HTML. Explain
+templates. Explain what global costants are.
+
+
+
+## Templates
+
+Adjust the `index.erb` file in the `views`
+directory and add the `<h1>…</h1>` line:
+
+```HTML
+…
+  <body class='container'>
+    <h1><%= @title %></h1>
+    <p>Cast your vote:</p>
+…
+```
+
+Change the `get` action:
 
 ```Ruby
 get '/' do
@@ -90,11 +120,8 @@ get '/' do
 end
 ```
 
-Run `ruby suffragist.rb`, check your
-results and quit the server with `ctrl-c`.
-
-Coach: Talk a little about HTML. Recall
-loops from the previous part of the workshop.
+Coach: Explain what instance variables are and
+how Sinatra makes them visible in the views.
 
 
 
@@ -104,15 +131,16 @@ Put this into `suffragist.rb`:
 
 ```Ruby
 post '/cast' do
+  @title = 'Thanks for casting your vote!'
   @vote  = params['vote']
   erb :cast
 end
 ```
 
-Create a new view, `cast.erb`, and put
-there some HTML with embedded Ruby code:
+Create a new file in the `views` directory, `cast.erb`,
+and put there some HTML with embedded Ruby code:
 
-```ERb
+```HTML
 <!DOCTYPE html>
 <html>
   <head>
@@ -121,22 +149,24 @@ there some HTML with embedded Ruby code:
     <link href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet' />
   </head>
   <body class='container'>
+    <h1><%= @title %></h1>
     <p>You cast: <%= Choices[@vote] %></p>
-    <p><a href='results'>See the results!</a></p>
+    <p><a href='/results'>See the results!</a></p>
   </body>
 </html>
 ```
 
-Coach: Explain what ERb files are. How to catch
-what was sent in the form? What does `@` mean?
+Coach: Explain how POST works. How to catch what
+was sent in the form? Where does `params` come from?
 
 
 
 ## Factor out a common layout
 
-Create `layout.erb` file in the `views` directory. Put there code:
+Create `layout.erb` file in the `views`
+directory. Put the following in there:
 
-```ERb
+```HTML
 <!DOCTYPE html>
 <html>
   <head>
@@ -151,10 +181,11 @@ Create `layout.erb` file in the `views` directory. Put there code:
 </html>
 ```
 
-Remove the above parts from the other two templats (`index.erb` and
-`cast.erb`). Refresh the page and look into the source code again.
+Remove the above parts from the other two templats
+(`index.erb` and `cast.erb` in the `views` directory).
 
-Coach: Talk about structure of the HTML document. Explain what `yield` does.
+Coach: Talk about the structure of HTML documents and how factoring
+out common parts work in general. Explain what `yield` does.
 
 
 
@@ -168,7 +199,7 @@ get '/results' do
 end
 ```
 
-Create a new view, `results.erb`.
+Create a new file in the `views` directory, `results.erb`.
 
 Watch the page (run `ruby suffragist.rb`, check
 your results and quit the server with `ctrl-c`).
@@ -217,7 +248,7 @@ Coach: Explain why are we using words preceded with `@`.
 
 Add some code into the `results.erb` view:
 
-```ERb
+```HTML
 <table class='table table-hover table-striped'>
   <% Choices.each do |id, text| %>
     <tr>
