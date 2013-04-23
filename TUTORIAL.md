@@ -157,7 +157,7 @@ and put there some HTML with embedded Ruby code:
 ```
 
 Coach: Explain how POST works. How to catch what
-was sent in the form? Where does `params` come from?
+was sent in the form? Where do `params` come from?
 
 
 
@@ -185,7 +185,7 @@ Remove the above parts from the other two templats
 (`index.erb` and `cast.erb` in the `views` directory).
 
 Coach: Talk about the structure of HTML documents and how factoring
-out common parts work in general. Explain what `yield` does.
+out common code work in general. Explain what `yield` does.
 
 
 
@@ -195,16 +195,31 @@ Put this into `suffragist.rb`:
 
 ```Ruby
 get '/results' do
+  @votes = { 'waw' => 7, 'krk' => 5 }
   erb :results
 end
 ```
 
 Create a new file in the `views` directory, `results.erb`.
 
+```HTML
+<table class='table table-hover table-striped'>
+  <% Choices.each do |id, text| %>
+    <tr>
+      <th><%= text %></th>
+      <td><%= @votes[id] || 0 %>
+      <td><%= '#' * (@votes[id] || 0) %></td>
+    </tr>
+  <% end %>
+</table>
+<p><a href='/'>Cast more votes!</a></p>
+```
+
 Watch the page (run `ruby suffragist.rb`, check
 your results and quit the server with `ctrl-c`).
 
-Coach: Sum up what we are able to do so far.
+Coach: Explain HTML tables and how how the
+missing values from the hash default to zero.
 
 
 
@@ -212,16 +227,14 @@ Coach: Sum up what we are able to do so far.
 
 Time for something new! Let’s store our choices.
 
-Add to `suffragist.rb`:
+Add the following to the top of `suffragist.rb`:
 
 ```Ruby
 require 'yaml/store'
 ```
 
-Coach: What is YAML?
-
 Add some more code into `suffragist.rb` – replace
-`post '/cast'` and `get '/results'` with code:
+`post '/cast'` and `get '/results'` with the following:
 
 ```Ruby
 post '/cast' do
@@ -244,24 +257,7 @@ get '/results' do
 end
 ```
 
-Coach: Explain why are we using words preceded with `@`.
-
-Add some code into the `results.erb` view:
-
-```HTML
-<table class='table table-hover table-striped'>
-  <% Choices.each do |id, text| %>
-    <tr>
-      <th><%= text %></th>
-      <td><%= @votes[id] || 0 %>
-      <td><%= '#' * (@votes[id] || 0) %></td>
-    </tr>
-  <% end %>
-</table>
-<p><a href='/'>Cast more votes!</a></p>
-```
-
-run `ruby suffragist.rb` and check your results.
+Coach: Explain what YAML is.
 
 
 
@@ -282,6 +278,7 @@ Coach: In the end explain shortly the differences between Sinatra and Rails.
 
 Try to change things in the app in any way you see fit:
 
-* Maybe redirect to the results outright?
-* Maybe add other votings? How would the YAML file need to change?
-* Maybe try to style the file in different ways?
+* Add some additional logic to the views.
+* Redirect to the results outright.
+* Add other votings; how would the YAML file need to change?
+* Try to style the file in different ways.
