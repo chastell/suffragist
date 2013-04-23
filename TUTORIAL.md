@@ -44,7 +44,7 @@ a directory for our views (and name it `views`).
 
 Put this code into an `index.erb` file in the `views` directory:
 
-```ERb
+```HTML
 <!DOCTYPE html>
 <html>
   <head>
@@ -103,7 +103,7 @@ templates. Explain what global costants are.
 Adjust the `index.erb` file in the `views`
 directory and add the `<h1>…</h1>` line:
 
-```ERb
+```HTML
 …
   <body class='container'>
     <h1><%= @title %></h1>
@@ -139,7 +139,7 @@ end
 Create a new file in the `views` directory, `cast.erb`,
 and put there some HTML with embedded Ruby code:
 
-```ERb
+```HTML
 <!DOCTYPE html>
 <html>
   <head>
@@ -163,7 +163,7 @@ what was sent in the form? What does `@` mean?
 
 Create `layout.erb` file in the `views` directory. Put there code:
 
-```ERb
+```HTML
 <!DOCTYPE html>
 <html>
   <head>
@@ -245,7 +245,7 @@ Coach: Explain why are we using words preceded with `@`.
 
 Add some code into the `results.erb` view:
 
-```ERb
+```HTML
 <table class='table table-hover table-striped'>
   <% Choices.each do |id, text| %>
     <tr>
