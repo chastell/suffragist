@@ -70,6 +70,7 @@ Put this code into an `index.erb` file in the `views` directory:
   </body>
 </html>
 ```
+
 And into `suffragist.rb`:
 
 ```Ruby
@@ -81,7 +82,36 @@ Choices = {
 }
 ```
 
-Change `get` action:
+Change the `get` action:
+
+```Ruby
+get '/' do
+  erb :index
+end
+```
+
+Run `ruby suffragist.rb`, check your
+results and quit the server with `ctrl-c`.
+
+Coach: Talk a little about HTML. Explain
+templates. Explain what global costants are.
+
+
+
+## Templates
+
+Adjust the `index.erb` file in the `views`
+directory and add the `<h1>…</h1>` line:
+
+```ERb
+…
+  <body class='container'>
+    <h1><%= @title %></h1>
+    <p>Cast your vote:</p>
+…
+```
+
+Change the `get` action:
 
 ```Ruby
 get '/' do
@@ -90,11 +120,8 @@ get '/' do
 end
 ```
 
-Run `ruby suffragist.rb`, check your
-results and quit the server with `ctrl-c`.
-
-Coach: Talk a little about HTML. Recall
-loops from the previous part of the workshop.
+Coach: Explain what instance variables are and
+how Sinatra makes them visible in the views.
 
 
 
