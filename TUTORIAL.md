@@ -278,6 +278,7 @@ Coach: In the end explain shortly the differences between Sinatra and Rails.
 
 Try to change things in the app in any way you see fit:
 
-* Maybe redirect to the results outright?
-* Maybe add other votings? How would the YAML file need to change?
-* Maybe try to style the file in different ways?
+* Add some additional logic to the views.
+* Redirect to the results outright.
+* Add other votings; how would the YAML file need to change?
+* Try to style the file in different ways.
