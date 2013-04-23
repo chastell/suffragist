@@ -151,7 +151,7 @@ and put there some HTML with embedded Ruby code:
   <body class='container'>
     <h1><%= @title %></h1>
     <p>You cast: <%= Choices[@vote] %></p>
-    <p><a href='results'>See the results!</a></p>
+    <p><a href='/results'>See the results!</a></p>
   </body>
 </html>
 ```
