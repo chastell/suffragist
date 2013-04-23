@@ -195,16 +195,31 @@ Put this into `suffragist.rb`:
 
 ```Ruby
 get '/results' do
+  @votes = { 'waw' => 7, 'krk' => 5 }
   erb :results
 end
 ```
 
 Create a new file in the `views` directory, `results.erb`.
 
+```HTML
+<table class='table table-hover table-striped'>
+  <% Choices.each do |id, text| %>
+    <tr>
+      <th><%= text %></th>
+      <td><%= @votes[id] || 0 %>
+      <td><%= '#' * (@votes[id] || 0) %></td>
+    </tr>
+  <% end %>
+</table>
+<p><a href='/'>Cast more votes!</a></p>
+```
+
 Watch the page (run `ruby suffragist.rb`, check
 your results and quit the server with `ctrl-c`).
 
-Coach: Sum up what we are able to do so far.
+Coach: Explain HTML tables and how how the
+missing values from the hash default to zero.
 
 
 
@@ -212,16 +227,14 @@ Coach: Sum up what we are able to do so far.
 
 Time for something new! Let’s store our choices.
 
-Add to `suffragist.rb`:
+Add the following to the top of `suffragist.rb`:
 
 ```Ruby
 require 'yaml/store'
 ```
 
-Coach: What is YAML?
-
 Add some more code into `suffragist.rb` – replace
-`post '/cast'` and `get '/results'` with code:
+`post '/cast'` and `get '/results'` with the following:
 
 ```Ruby
 post '/cast' do
@@ -244,24 +257,7 @@ get '/results' do
 end
 ```
 
-Coach: Explain why are we using words preceded with `@`.
-
-Add some code into the `results.erb` view:
-
-```HTML
-<table class='table table-hover table-striped'>
-  <% Choices.each do |id, text| %>
-    <tr>
-      <th><%= text %></th>
-      <td><%= @votes[id] || 0 %>
-      <td><%= '#' * (@votes[id] || 0) %></td>
-    </tr>
-  <% end %>
-</table>
-<p><a href='/'>Cast more votes!</a></p>
-```
-
-run `ruby suffragist.rb` and check your results.
+Coach: Explain what YAML is.
 
 
 
