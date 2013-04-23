@@ -131,6 +131,7 @@ Put this into `suffragist.rb`:
 
 ```Ruby
 post '/cast' do
+  @title = 'Thanks for casting your vote!'
   @vote  = params['vote']
   erb :cast
 end
@@ -148,6 +149,7 @@ and put there some HTML with embedded Ruby code:
     <link href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet' />
   </head>
   <body class='container'>
+    <h1><%= @title %></h1>
     <p>You cast: <%= Choices[@vote] %></p>
     <p><a href='results'>See the results!</a></p>
   </body>
