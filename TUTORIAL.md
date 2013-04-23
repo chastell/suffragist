@@ -156,14 +156,15 @@ and put there some HTML with embedded Ruby code:
 </html>
 ```
 
-Coach: Explain what ERb files are. How to catch
-what was sent in the form? What does `@` mean?
+Coach: Explain how POST works. How to catch what
+was sent in the form? Where does `params` come from?
 
 
 
 ## Factor out a common layout
 
-Create `layout.erb` file in the `views` directory. Put there code:
+Create `layout.erb` file in the `views`
+directory. Put the following in there:
 
 ```HTML
 <!DOCTYPE html>
@@ -182,9 +183,9 @@ Create `layout.erb` file in the `views` directory. Put there code:
 
 Remove the above parts from the other two templats
 (`index.erb` and `cast.erb` in the `views` directory).
-Refresh the page and look into the source code again.
 
-Coach: Talk about structure of the HTML document. Explain what `yield` does.
+Coach: Talk about the structure of HTML documents and how factoring
+out common parts work in general. Explain what `yield` does.
 
 
 
