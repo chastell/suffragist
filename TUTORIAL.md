@@ -42,7 +42,7 @@ Coach: Explain POST and GET methods, and how to communicate with the browser.
 To keep everything in order let’s make
 a directory for our views (and name it `views`).
 
-Put this code into `index.erb`:
+Put this code into an `index.erb` file in the `views` directory:
 
 ```ERb
 <!DOCTYPE html>
@@ -109,8 +109,8 @@ post '/cast' do
 end
 ```
 
-Create a new view, `cast.erb`, and put
-there some HTML with embedded Ruby code:
+Create a new file in the `views` directory, `cast.erb`,
+and put there some HTML with embedded Ruby code:
 
 ```ERb
 <!DOCTYPE html>
@@ -151,8 +151,9 @@ Create `layout.erb` file in the `views` directory. Put there code:
 </html>
 ```
 
-Remove the above parts from the other two templats (`index.erb` and
-`cast.erb`). Refresh the page and look into the source code again.
+Remove the above parts from the other two templats
+(`index.erb` and `cast.erb` in the `views` directory).
+Refresh the page and look into the source code again.
 
 Coach: Talk about structure of the HTML document. Explain what `yield` does.
 
@@ -168,7 +169,7 @@ get '/results' do
 end
 ```
 
-Create a new view, `results.erb`.
+Create a new file in the `views` directory, `results.erb`.
 
 Watch the page (run `ruby suffragist.rb`, check
 your results and quit the server with `ctrl-c`).
